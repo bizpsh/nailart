@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>세무법인 올바른 — 모바일</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&amp;family=Noto+Serif+KR:wght@600;700&amp;display=swap">
+<style>
+body{margin:0;background:#F6F5F1}
+a{color:#123A63}a:hover{color:#0B2540}
+*{box-sizing:border-box}
+input,textarea,button{font-family:inherit}
+</style>
+</helmet>
+<div style="width: 390px; font-family: 'IBM Plex Sans KR', system-ui, sans-serif; color: #14202E; background: #F6F5F1; font-size: 16px; line-height: 1.7; position: relative">
+
+<!-- Header -->
+<header style="background: #FFFFFF; border-bottom: 1px solid #E2DED6; height: 64px; padding: 0 16px; display: flex; align-items: center; justify-content: space-between">
+<span style="display: flex; align-items: center; gap: 10px">
+<span style="width: 32px; height: 32px; border-radius: 8px; background: {{primary}}; display: flex; align-items: center; justify-content: center">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16M6 20V10M10 20V10M14 20V10M18 20V10M3 10l9-6 9 6"></path></svg>
+</span>
+<span style="font-family: 'Noto Serif KR', serif; font-weight: 700; font-size: 18px">세무법인 올바른</span>
+</span>
+<span style="display: flex; gap: 4px">
+<a href="tel:[000-0000-0000]" aria-label="전화 상담" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #14202E">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"></path></svg>
+</a>
+<button type="button" onClick="{{toggleMenu}}" aria-label="메뉴 열기" aria-expanded="{{menuExpanded}}" style="width: 44px; height: 44px; border: 0; background: transparent; display: flex; align-items: center; justify-content: center; color: #14202E; cursor: pointer">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+</button>
+</span>
+</header>
+<sc-if value="{{menuOpen}}" hint-placeholder-val="{{ false }}">
+<nav aria-label="주요 메뉴" style="background: #FFFFFF; border-bottom: 1px solid #E2DED6; padding: 8px 16px 16px; display: flex; flex-direction: column">
+<a href="#m-services" style="padding: 14px 4px; font-size: 17px; font-weight: 600; text-decoration: none; color: #14202E; border-bottom: 1px solid #EEEAE3">서비스</a>
+<a href="#m-experts" style="padding: 14px 4px; font-size: 17px; font-weight: 600; text-decoration: none; color: #14202E; border-bottom: 1px solid #EEEAE3">전문가</a>
+<a href="#m-cases" style="padding: 14px 4px; font-size: 17px; font-weight: 600; text-decoration: none; color: #14202E; border-bottom: 1px solid #EEEAE3">절세 사례</a>
+<a href="#m-contact" style="padding: 14px 4px; font-size: 17px; font-weight: 600; text-decoration: none; color: #14202E">상담 신청</a>
+</nav>
+</sc-if>
+
+<!-- Hero -->
+<section style="background: {{primary}}; color: #FFFFFF; padding: 56px 20px 40px; display: flex; flex-direction: column; gap: 20px">
+<span style="align-self: flex-start; font-size: 14px; font-weight: 600; padding: 4px 12px; border: 1px solid rgba(255,255,255,0.35); border-radius: 999px; color: #E8EEF5">개인사업자 · 법인 · 창업자</span>
+<h1 style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: 30px; line-height: 1.4; letter-spacing: -0.03em">복잡한 세금,<br>확실한 절세 전략으로<br>해결해 드립니다.</h1>
+<p style="margin: 0; font-size: 16px; color: #D5DFEA">기장부터 세무조사 대응까지, 담당 세무사가 끝까지 직접 책임집니다.</p>
+<a href="#m-contact" style="display: flex; align-items: center; justify-content: center; height: 56px; border-radius: 10px; background: {{accent}}; color: #14202E; text-decoration: none; font-weight: 700; font-size: 17px">무료 세무 상담 신청</a>
+<div style="margin-top: 12px; background: #FFFFFF; color: #14202E; border-radius: 14px; padding: 24px 20px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 16px">
+<div style="display: flex; flex-direction: column; border-top: 2px solid #14202E; padding-top: 10px"><span style="font-family: 'Noto Serif KR', serif; font-size: 24px; font-weight: 700">[00.0]%</span><span style="font-size: 14px; color: #4A5563">고객 만족도</span></div>
+<div style="display: flex; flex-direction: column; border-top: 2px solid #14202E; padding-top: 10px"><span style="font-family: 'Noto Serif KR', serif; font-size: 24px; font-weight: 700">[000]억</span><span style="font-size: 14px; color: #4A5563">누적 절세 금액</span></div>
+<div style="display: flex; flex-direction: column; border-top: 2px solid #14202E; padding-top: 10px"><span style="font-family: 'Noto Serif KR', serif; font-size: 24px; font-weight: 700">[0,000]곳</span><span style="font-size: 14px; color: #4A5563">기장 거래처</span></div>
+<div style="display: flex; flex-direction: column; border-top: 2px solid #14202E; padding-top: 10px"><span style="font-family: 'Noto Serif KR', serif; font-size: 24px; font-weight: 700">[00]년</span><span style="font-size: 14px; color: #4A5563">세무 업력</span></div>
+</div>
+</section>
+
+<!-- Services -->
+<section id="m-services" style="padding: 64px 20px; display: flex; flex-direction: column; gap: 16px">
+<span style="font-size: 14px; font-weight: 700; letter-spacing: 0.08em; color: {{primary}}">SERVICES</span>
+<h2 style="margin: 0 0 8px; font-family: 'Noto Serif KR', serif; font-size: 26px; line-height: 1.4">상황에 맞는 세무 서비스</h2>
+<sc-for list="{{services}}" as="s" hint-placeholder-count="6">
+<a href="#m-contact" style="display: flex; gap: 16px; align-items: flex-start; background: #FFFFFF; border: 1px solid #E2DED6; border-radius: 12px; padding: 20px; text-decoration: none; color: #14202E">
+<span style="width: 44px; height: 44px; flex-shrink: 0; border-radius: 10px; background: #EDF1F6; color: {{primary}}; display: flex; align-items: center; justify-content: center">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{s.icon}}"></path></svg>
+</span>
+<span style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 18px; font-weight: 700">{{s.title}}</span>
+<span style="font-size: 15px; color: #4A5563; line-height: 1.6">{{s.desc}}</span>
+</span>
+</a>
+</sc-for>
+</section>
+
+<!-- Experts -->
+<section id="m-experts" style="background: #FFFFFF; border-top: 1px solid #E2DED6; border-bottom: 1px solid #E2DED6; padding: 64px 20px; display: flex; flex-direction: column; gap: 16px">
+<span style="font-size: 14px; font-weight: 700; letter-spacing: 0.08em; color: {{primary}}">EXPERTS</span>
+<h2 style="margin: 0 0 8px; font-family: 'Noto Serif KR', serif; font-size: 26px; line-height: 1.4">담당 세무사가<br>직접 상담합니다</h2>
+<sc-for list="{{experts}}" as="e" hint-placeholder-count="2">
+<article style="display: flex; flex-direction: column; gap: 16px; border: 1px solid #E2DED6; border-radius: 14px; padding: 20px; background: #F6F5F1">
+<div style="display: flex; gap: 16px; align-items: center">
+<div role="img" aria-label="세무사 프로필 사진 자리" style="width: 88px; height: 110px; flex-shrink: 0; border-radius: 10px; background: #DCE3EB; color: #4A5563; display: flex; align-items: center; justify-content: center">
+<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"></path></svg>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 14px; font-weight: 600; color: {{primary}}">{{e.role}}</span>
+<span style="font-family: 'Noto Serif KR', serif; font-size: 22px; font-weight: 700">{{e.name}}</span>
+<span style="font-size: 14px; color: #4A5563">{{e.tags}}</span>
+</div>
+</div>
+<dl style="margin: 0; display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 6px 10px; font-size: 15px">
+<dt style="color: #4A5563; font-weight: 600">자격</dt><dd style="margin: 0">{{e.cert}}</dd>
+<dt style="color: #4A5563; font-weight: 600">경력</dt><dd style="margin: 0">{{e.career}}</dd>
+<dt style="color: #4A5563; font-weight: 600">이력</dt><dd style="margin: 0">{{e.history}}</dd>
+</dl>
+</article>
+</sc-for>
+</section>
+
+<!-- Cases -->
+<section id="m-cases" style="padding: 64px 20px; display: flex; flex-direction: column; gap: 16px">
+<span style="font-size: 14px; font-weight: 700; letter-spacing: 0.08em; color: {{primary}}">CASES</span>
+<h2 style="margin: 0 0 8px; font-family: 'Noto Serif KR', serif; font-size: 26px; line-height: 1.4">절세 성공 사례</h2>
+<sc-for list="{{cases}}" as="c" hint-placeholder-count="3">
+<article style="display: flex; flex-direction: column; gap: 12px; background: #FFFFFF; border: 1px solid #E2DED6; border-radius: 12px; padding: 20px">
+<span style="align-self: flex-start; font-size: 14px; font-weight: 600; padding: 2px 10px; border-radius: 6px; background: #EDF1F6; color: {{primary}}">{{c.tag}}</span>
+<h3 style="margin: 0; font-size: 17px; line-height: 1.5">{{c.title}}</h3>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding: 14px; border-radius: 8px; background: #F6F5F1">
+<div style="display: flex; flex-direction: column"><span style="font-size: 14px; color: #4A5563">컨설팅 전</span><span style="font-size: 16px; font-weight: 600">{{c.before}}</span></div>
+<div style="display: flex; flex-direction: column"><span style="font-size: 14px; color: #4A5563">절세 후</span><span style="font-size: 16px; font-weight: 700; color: {{primary}}">{{c.after}}</span></div>
+</div>
+</article>
+</sc-for>
+<h3 style="margin: 32px 0 0; font-size: 20px">고객 후기</h3>
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 14px; padding: 20px; border-radius: 12px; background: #FFFFFF; border: 1px solid #E2DED6">
+<blockquote style="margin: 0; font-size: 16px; line-height: 1.8">[고객 후기 본문 — 고객 동의를 받은 실제 후기로 교체]</blockquote>
+<figcaption style="font-size: 14px; color: #4A5563"><strong style="color: #14202E">[고객 이니셜]</strong> · [업종 · 이용 서비스]</figcaption>
+</figure>
+<div style="display: flex; justify-content: center; gap: 8px" aria-hidden="true">
+<span style="width: 20px; height: 6px; border-radius: 3px; background: {{primary}}"></span>
+<span style="width: 6px; height: 6px; border-radius: 3px; background: #C9C3B8"></span>
+<span style="width: 6px; height: 6px; border-radius: 3px; background: #C9C3B8"></span>
+</div>
+</section>
+
+<!-- Contact -->
+<section id="m-contact" style="background: {{primary}}; color: #FFFFFF; padding: 64px 20px; display: flex; flex-direction: column; gap: 20px">
+<span style="font-size: 14px; font-weight: 700; letter-spacing: 0.08em; color: #C9D6E4">CONTACT</span>
+<h2 style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: 26px; line-height: 1.4">무료 상담 신청</h2>
+<p style="margin: 0; font-size: 15px; color: #D5DFEA">영업일 기준 [24시간] 이내 담당 세무사가 연락드립니다.</p>
+<div style="background: #FFFFFF; color: #14202E; border-radius: 14px; padding: 24px 20px">
+<sc-if value="{{showForm}}" hint-placeholder-val="{{ true }}">
+<form onSubmit="{{submit}}" style="display: flex; flex-direction: column; gap: 18px">
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 15px; font-weight: 600">이름
+<input type="text" required placeholder="홍길동" style="height: 50px; padding: 0 14px; border: 1px solid #C9C3B8; border-radius: 8px; font-size: 16px">
+</label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 15px; font-weight: 600">연락처
+<input type="tel" required placeholder="010-0000-0000" style="height: 50px; padding: 0 14px; border: 1px solid #C9C3B8; border-radius: 8px; font-size: 16px">
+</label>
+<fieldset style="margin: 0; padding: 0; border: 0">
+<legend style="font-size: 15px; font-weight: 600; margin-bottom: 8px; padding: 0">상담 유형</legend>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{types}}" as="t" hint-placeholder-count="6">
+<button type="button" onClick="{{t.pick}}" aria-pressed="{{t.pressed}}" style="{{t.style}}">{{t.label}}</button>
+</sc-for>
+</div>
+</fieldset>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 15px; font-weight: 600">상담 내용
+<textarea rows="4" placeholder="업종, 매출 규모, 궁금한 점" style="padding: 12px 14px; border: 1px solid #C9C3B8; border-radius: 8px; font-size: 16px; resize: vertical"></textarea>
+</label>
+<label style="display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: #4A5563">
+<input type="checkbox" required style="width: 20px; height: 20px; margin: 2px 0 0; flex-shrink: 0">
+<span>[개인정보 수집·이용]에 동의합니다.</span>
+</label>
+<button type="submit" style="height: 56px; border: 0; border-radius: 10px; background: {{primary}}; color: #FFFFFF; font-size: 17px; font-weight: 700; cursor: pointer">무료 상담 신청하기</button>
+</form>
+</sc-if>
+<sc-if value="{{done}}" hint-placeholder-val="{{ false }}">
+<div style="min-height: 360px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; text-align: center">
+<h3 style="margin: 0; font-size: 22px">신청이 접수되었습니다</h3>
+<p style="margin: 0; font-size: 15px; color: #4A5563">{{picked}} 상담 · 담당 세무사가 곧 연락드립니다.</p>
+<button type="button" onClick="{{reset}}" style="margin-top: 8px; height: 46px; padding: 0 20px; border-radius: 8px; border: 1px solid #C9C3B8; background: #FFFFFF; font-size: 15px; font-weight: 600; color: #14202E; cursor: pointer">다시 작성하기</button>
+</div>
+</sc-if>
+</div>
+</section>
+
+<!-- Footer -->
+<footer style="background: #0E1722; color: #C3CCD6; font-size: 14px; line-height: 1.8; padding: 48px 20px 120px; display: flex; flex-direction: column; gap: 28px">
+<span style="font-family: 'Noto Serif KR', serif; font-size: 18px; font-weight: 700; color: #FFFFFF">세무법인 올바른</span>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-weight: 700; color: #FFFFFF">사업자 정보</span>
+<span>대표 세무사 [대표자명] · 사업자등록번호 [000-00-00000]</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-weight: 700; color: #FFFFFF">오시는 길</span>
+<span>[서울특별시 OO구 OO로 00, 0층]</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-weight: 700; color: #FFFFFF">상담 전화</span>
+<a href="tel:[000-0000-0000]" style="color: #FFFFFF; font-size: 22px; font-weight: 700; text-decoration: none">[000-0000-0000]</a>
+<span>평일 09:00–18:00</span>
+</div>
+<nav aria-label="약관" style="display: flex; flex-wrap: wrap; gap: 20px; border-top: 1px solid #2A3846; padding-top: 20px">
+<a href="#terms" style="color: #FFFFFF; text-decoration: none">이용약관</a>
+<a href="#privacy" style="color: #FFFFFF; text-decoration: none; font-weight: 700">개인정보처리방침</a>
+</nav>
+<span>© [YYYY] 세무법인 올바른</span>
+</footer>
+
+<!-- Sticky bottom CTA bar -->
+<div style="position: sticky; bottom: 0; background: #FFFFFF; border-top: 1px solid #E2DED6; padding: 12px 16px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 8px">
+<a href="tel:[000-0000-0000]" style="height: 52px; display: flex; align-items: center; justify-content: center; border-radius: 10px; border: 1px solid #C9C3B8; text-decoration: none; color: #14202E; font-weight: 700; font-size: 16px">전화</a>
+<a href="#m-contact" style="height: 52px; display: flex; align-items: center; justify-content: center; border-radius: 10px; background: {{primary}}; text-decoration: none; color: #FFFFFF; font-weight: 700; font-size: 16px">무료 상담 신청</a>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"primary":{"editor":"color","default":"#123A63","options":["#123A63","#1F3B2D","#2B2F3A","#3A2A4F"]},"accent":{"editor":"color","default":"#E3A34A","options":["#E3A34A","#F2C96B","#9FD3C7","#FFFFFF"]},"$preview":{"width":390,"height":6600}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { type: '기장 대리', done: false, menu: false };
+  }
+  renderVals() {
+    const primary = this.props.primary ?? '#123A63';
+    const accent = this.props.accent ?? '#E3A34A';
+    const labels = ['기장 대리', '신고 대리', '상속·증여세', '법인 전환', '세무조사 대응', '기타'];
+    const types = labels.map((label) => {
+      const on = this.state.type === label;
+      return {
+        label,
+        pressed: on ? 'true' : 'false',
+        style: 'min-height: 44px; padding: 0 16px; border-radius: 999px; font-size: 15px; font-weight: 600; cursor: pointer; ' +
+          (on ? 'background: ' + primary + '; color: #FFFFFF; border: 1px solid ' + primary + ';'
+              : 'background: #FFFFFF; color: #14202E; border: 1px solid #C9C3B8;'),
+        pick: () => this.setState({ type: label }),
+      };
+    });
+    return {
+      primary, accent, types,
+      menuOpen: this.state.menu,
+      menuExpanded: this.state.menu ? 'true' : 'false',
+      toggleMenu: () => this.setState({ menu: !this.state.menu }),
+      picked: this.state.type,
+      showForm: !this.state.done,
+      done: this.state.done,
+      submit: (e) => { e.preventDefault(); this.setState({ done: true }); },
+      reset: () => this.setState({ done: false }),
+      services: [
+        { title: '기장 대리', desc: '장부 작성과 부가세·원천세 신고를 매월 대신 처리합니다.', icon: 'M8 3h8l4 4v14H4V3h4zM16 3v4h4M8 12h8M8 16h6' },
+        { title: '신고 대리', desc: '종합소득세·부가세·법인세 신고를 공제 검토와 함께 대리합니다.', icon: 'M9 11l3 3 7-7M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9' },
+        { title: '상속·증여세', desc: '사전 증여 설계부터 재산 평가, 신고까지 함께합니다.', icon: 'M3 11l9-7 9 7M5 10v10h14V10M10 20v-6h4v6' },
+        { title: '법인 전환', desc: '전환 시점과 방식을 세 부담 기준으로 비교해 드립니다.', icon: 'M4 21V7l8-4 8 4v14M9 21v-4h6v4M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01' },
+        { title: '세무조사 대응', desc: '자료 준비, 조사 입회, 불복 절차까지 직접 대응합니다.', icon: 'M12 3l8 3v6c0 5-3.4 8.3-8 9-4.6-.7-8-4-8-9V6l8-3zM9 12l2 2 4-4' },
+        { title: '창업 세무 컨설팅', desc: '사업자 유형 선택과 창업 감면 항목을 점검합니다.', icon: 'M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8' },
+      ],
+      experts: [
+        { role: '대표 세무사', name: '[세무사 이름]', tags: '법인세 · 세무조사', cert: '세무사 ([제00회])', career: '[국세청 근무 00년]', history: '[주요 이력 1] · [주요 이력 2]' },
+        { role: '파트너 세무사', name: '[세무사 이름]', tags: '상속·증여 · 자산 설계', cert: '세무사 · [공인회계사]', career: '[회계법인 근무 00년]', history: '[주요 이력 1] · [주요 이력 2]' },
+      ],
+      cases: [
+        { tag: '법인 전환', title: '[업종] 개인사업자, 법인 전환으로 소득세 부담 완화', before: '[0,000]만 원', after: '[0,000]만 원' },
+        { tag: '상속·증여세', title: '[가족 구성] 부동산 증여, 사전 설계로 세 부담 축소', before: '[0,000]만 원', after: '[0,000]만 원' },
+        { tag: '세무조사 대응', title: '[업종] 법인 세무조사, 소명 자료로 추징액 감축', before: '[0,000]만 원', after: '[0,000]만 원' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
