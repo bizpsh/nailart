@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>서비스 안내 — 세무법인 올바른</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#F8FAFC}
+a{color:#2563EB}a:hover{color:#1D4ED8}
+*{box-sizing:border-box}
+button:focus-visible,a:focus-visible{outline:2px solid #2563EB;outline-offset:2px}
+</style>
+</helmet>
+<div style="font-family: 'IBM Plex Sans KR', system-ui, sans-serif; color: #0F172A; background: #F8FAFC; font-size: 16px; line-height: 1.6; font-variant-numeric: tabular-nums">
+<dc-import name="Header" active="services" hint-size="100%,72px"></dc-import>
+
+<section style="background: #0F172A; color: #FFFFFF">
+<div style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 64px; display: flex; flex-direction: column; gap: 14px">
+<nav aria-label="현재 위치" style="font-size: 14px; color: #CBD5E1"><a href="Main.dc.html" style="color: #CBD5E1">홈</a> › 서비스</nav>
+<h1 style="margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1.25; letter-spacing: -0.03em">필요한 업무만,<br>투명한 범위와 비용으로</h1>
+<p style="margin: 0; font-size: 18px; color: #CBD5E1; max-width: 640px">서비스마다 포함 업무와 진행 방식을 먼저 확인하세요.</p>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 64px 24px 0; display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
+<div role="tablist" aria-label="서비스 선택" style="flex: 1 1 260px; max-width: 100%; display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="6">
+<button type="button" role="tab" aria-selected="{{t.selected}}" onClick="{{t.pick}}" style="{{t.style}}">
+<span style="{{t.iconBox}}">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{t.icon}}"></path></svg>
+</span>
+<span style="display: flex; flex-direction: column; align-items: flex-start">
+<span style="font-size: 16px; font-weight: 700; color: #0F172A">{{t.title}}</span>
+<span style="font-size: 14px; color: #475569">{{t.tagline}}</span>
+</span>
+</button>
+</sc-for>
+</div>
+
+<div role="tabpanel" style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<div style="padding: 32px; border-radius: 24px; background: #FFFFFF; border: 1px solid #CBD5E1; display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h2 style="margin: 0; font-size: 32px; letter-spacing: -0.03em">{{cur.title}}</h2>
+<p style="margin: 0; font-size: 18px; color: #475569">{{cur.tagline}}</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 15px; font-weight: 700">이런 분께 맞아요</span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{cur.who}}" as="w" hint-placeholder-count="3">
+<span style="font-size: 14px; font-weight: 600; padding: 6px 12px; border-radius: 999px; background: #F1F5F9; color: #0F172A">{{w}}</span>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 15px; font-weight: 700">포함 업무</span>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px">
+<sc-for list="{{cur.items}}" as="it" hint-placeholder-count="4">
+<div style="display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-radius: 12px; background: #F8FAFC; border: 1px solid #E2E8F0; font-size: 15px; font-weight: 600">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg>{{it}}
+</div>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 15px; font-weight: 700">진행 방식</span>
+<ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px">
+<sc-for list="{{cur.flow}}" as="f" hint-placeholder-count="4">
+<li style="display: flex; flex-direction: column; gap: 4px; padding: 14px; border-radius: 12px; background: #F1F5F9">
+<span style="font-size: 14px; font-weight: 700; color: #475569">STEP {{f.no}}</span>
+<span style="font-size: 15px; font-weight: 700">{{f.label}}</span>
+</li>
+</sc-for>
+</ol>
+</div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 24px 28px; border-radius: 20px; background: #0F172A; color: #FFFFFF">
+<div style="display: flex; flex-direction: column">
+<span style="font-size: 14px; color: #CBD5E1">수임료</span>
+<span style="font-size: 26px; font-weight: 700">{{cur.fee}}</span>
+<span style="font-size: 14px; color: #CBD5E1">업종·매출·업무 범위에 따라 달라지며 첫 상담에서 서면 안내</span>
+</div>
+<a href="Contact.dc.html" style="display: inline-flex; align-items: center; height: 56px; padding: 0 24px; border-radius: 14px; background: #2563EB; color: #FFFFFF; text-decoration: none; font-weight: 700; font-size: 16px">상담 신청하기</a>
+</div>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 96px 24px 0">
+<h2 style="margin: 0 0 24px; font-size: clamp(26px, 3vw, 34px); letter-spacing: -0.03em">자주 묻는 질문</h2>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{faqs}}" as="q" hint-placeholder-count="4">
+<div style="border-radius: 16px; background: #FFFFFF; border: 1px solid #CBD5E1">
+<button type="button" onClick="{{q.toggle}}" aria-expanded="{{q.expanded}}" style="width: 100%; min-height: 64px; padding: 0 24px; border: 0; background: transparent; display: flex; align-items: center; justify-content: space-between; gap: 16px; font-family: inherit; font-size: 17px; font-weight: 700; color: #0F172A; text-align: left; cursor: pointer">
+{{q.q}}
+<span style="font-size: 22px; color: #475569" aria-hidden="true">{{q.sign}}</span>
+</button>
+<sc-if value="{{q.open}}" hint-placeholder-val="{{ false }}">
+<p style="margin: 0; padding: 0 24px 22px; font-size: 16px; color: #334155">{{q.a}}</p>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 96px 24px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; padding: 40px; border-radius: 24px; background: #FFFFFF; border: 1px solid #CBD5E1">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h2 style="margin: 0; font-size: 26px; letter-spacing: -0.02em">어떤 서비스가 맞는지 모르겠다면</h2>
+<p style="margin: 0; font-size: 16px; color: #475569">홈의 1분 AI 절세 진단으로 먼저 확인해 보세요.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a href="Main.dc.html" style="display: inline-flex; align-items: center; height: 56px; padding: 0 22px; border-radius: 14px; border: 1px solid #0F172A; color: #0F172A; text-decoration: none; font-weight: 700">AI 절세 진단 (홈)</a>
+<a href="Contact.dc.html" style="display: inline-flex; align-items: center; height: 56px; padding: 0 22px; border-radius: 14px; background: #2563EB; color: #FFFFFF; text-decoration: none; font-weight: 700">상담 신청하기</a>
+</div>
+</div>
+</section>
+
+<dc-import name="Footer" hint-size="100%,300px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2700}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { sel: 0, open: 0 };
+  }
+  renderVals() {
+    const S = [
+      { title: '기장 대리', tagline: '장부는 맡기고, 사업에만 집중', who: ['개인사업자', '법인', '프리랜서'], items: ['매월 장부 작성·전표 처리', '부가세·원천세 신고', '4대보험 취득·상실 신고', '월별 손익 리포트'], flow: ['자료 연동', '월 마감', '신고', '리포트'], fee: '월 [00]만 원~', icon: 'M8 3h8l4 4v14H4V3h4zM16 3v4h4M8 12h8M8 16h6' },
+      { title: '신고 대리', tagline: '놓친 공제까지 찾아 신고', who: ['프리랜서', '개인사업자', '법인'], items: ['종합소득세 신고', '부가가치세 신고', '법인세 신고', '공제·감면 항목 검토'], flow: ['자료 요청', '검토', '신고', '결과 안내'], fee: '건당 [00]만 원~', icon: 'M9 11l3 3 7-7M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9' },
+      { title: '상속·증여세', tagline: '미리 설계할수록 줄어드는 세금', who: ['자산 이전 예정', '상속 개시 후 6개월 이내'], items: ['사전 증여 설계', '재산 평가', '상속·증여세 신고', '세무조사 대비'], flow: ['자산 파악', '시뮬레이션', '설계', '신고'], fee: '[재산 규모별 산정]', icon: 'M3 11l9-7 9 7M5 10v10h14V10M10 20v-6h4v6' },
+      { title: '법인 전환', tagline: '전환 시점, 숫자로 비교', who: ['성장 단계 개인사업자', '성실신고 대상'], items: ['전환 시점 시뮬레이션', '현물출자·포괄양수도 비교', '법인 설립 대행', '전환 후 기장 연계'], flow: ['현황 진단', '방식 비교', '설립', '사후 관리'], fee: '[전환 방식별 산정]', icon: 'M4 21V7l8-4 8 4v14M9 21v-4h6v4M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01' },
+      { title: '세무조사 대응', tagline: '통지서 받은 날부터 함께', who: ['조사 통지 수령', '사전 대비'], items: ['사전 통지 분석', '자료 준비·소명서', '조사 입회', '불복 청구'], flow: ['통지 분석', '자료 준비', '조사 대응', '종결·불복'], fee: '[사안별 산정]', icon: 'M12 3l8 3v6c0 5-3.4 8.3-8 9-4.6-.7-8-4-8-9V6l8-3zM9 12l2 2 4-4' },
+      { title: '창업 세무', tagline: '창업 첫해 감면, 빠짐없이', who: ['예비 창업자', '창업 1년 차'], items: ['사업자 유형 결정', '창업 감면 검토', '초기 비용 처리', '기장 셋업'], flow: ['사업 계획 확인', '유형 결정', '등록', '기장 시작'], fee: '[패키지 금액]', icon: 'M5 19l4-1 10-10-3-3L6 15l-1 4zM14 6l3 3M4 21h16' },
+    ];
+    const tabs = S.map((s, i) => {
+      const on = this.state.sel === i;
+      return {
+        ...s,
+        selected: on ? 'true' : 'false',
+        pick: () => this.setState({ sel: i }),
+        style: 'display: flex; align-items: center; gap: 14px; width: 100%; min-height: 72px; padding: 12px 16px; border-radius: 16px; cursor: pointer; text-align: left; font-family: inherit; background: #FFFFFF; border: 2px solid ' + (on ? '#0F172A' : '#CBD5E1') + ';',
+        iconBox: 'width: 44px; height: 44px; flex-shrink: 0; border-radius: 12px; display: flex; align-items: center; justify-content: center; ' + (on ? 'background: #0F172A; color: #FFFFFF;' : 'background: #F1F5F9; color: #0F172A;'),
+      };
+    });
+    const c = S[this.state.sel];
+    const F = [
+      { q: '수임료는 언제 확정되나요?', a: '첫 상담에서 업종·매출·업무 범위를 확인한 뒤 서면으로 안내합니다. 안내 범위를 벗어나는 업무는 사전에 고지합니다.' },
+      { q: '기존 세무사에서 옮길 수 있나요?', a: '가능합니다. [기존 자료 인수인계 절차와 소요 기간을 운영 방식에 맞게 기재]' },
+      { q: '자료는 어떻게 전달하나요?', a: '[홈택스 수임 동의, 카드·계좌 연동, 메일 등 실제 운영 방식 기재]' },
+      { q: '상담만 받아도 되나요?', a: '첫 상담은 무료입니다. 상담 후 계약 여부는 자유롭게 결정하시면 됩니다.' },
+    ];
+    return {
+      tabs,
+      cur: { ...c, flow: c.flow.map((label, i) => ({ label, no: '0' + (i + 1) })) },
+      faqs: F.map((f, i) => {
+        const open = this.state.open === i;
+        return { ...f, open, expanded: open ? 'true' : 'false', sign: open ? '−' : '+', toggle: () => this.setState({ open: open ? -1 : i }) };
+      }),
+    };
+  }
+}
+</script>
+</body>
+</html>

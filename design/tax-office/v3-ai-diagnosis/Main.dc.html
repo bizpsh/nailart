@@ -40,10 +40,10 @@ input:focus,textarea:focus,button:focus-visible,a:focus-visible{outline:2px soli
 </a>
 <nav class="nav-links" aria-label="주요 메뉴" style="display: flex; gap: 32px; font-size: 15px; font-weight: 600">
 <a href="#diagnosis" style="text-decoration: none; color: #0F172A; font-weight: 700">AI 진단</a>
-<a href="#services" style="text-decoration: none; color: #475569">서비스</a>
-<a href="#process" style="text-decoration: none; color: #475569">진행 과정</a>
-<a href="#experts" style="text-decoration: none; color: #475569">세무사</a>
-<a href="#cases" style="text-decoration: none; color: #475569">절세 사례</a>
+<a href="Services.dc.html" style="text-decoration: none; color: #475569">서비스</a>
+<a href="Cases.dc.html" style="text-decoration: none; color: #475569">절세 사례</a>
+<a href="Experts.dc.html" style="text-decoration: none; color: #475569">세무사</a>
+<a href="About.dc.html" style="text-decoration: none; color: #475569">회사 소개</a>
 </nav>
 <a href="#contact" style="display: inline-flex; align-items: center; height: 44px; padding: 0 18px; border-radius: 12px; background: {{cta}}; color: #FFFFFF; text-decoration: none; font-weight: 700; font-size: 15px">상담 신청하기</a>
 </div>
@@ -266,6 +266,7 @@ AI 세무 진단 · 베타</span>
 <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 40px">
 <span style="font-size: 15px; font-weight: 700; color: {{navy}}">서비스</span>
 <h2 style="margin: 0; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.3; letter-spacing: -0.03em">필요한 것만 골라 맡기세요</h2>
+<a href="Services.dc.html" style="align-self: flex-start; font-size: 15px; font-weight: 700; color: #2563EB; text-decoration: none; padding: 10px 0">서비스 상세 보기 ›</a>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px">
 <sc-for list="{{services}}" as="s" hint-placeholder-count="6">
@@ -325,6 +326,7 @@ AI 세무 진단 · 베타</span>
 <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 40px">
 <span style="font-size: 15px; font-weight: 700; color: {{navy}}">세무사</span>
 <h2 style="margin: 0; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.3; letter-spacing: -0.03em">처음부터 끝까지, 같은 세무사</h2>
+<a href="Experts.dc.html" style="align-self: flex-start; font-size: 15px; font-weight: 700; color: #2563EB; text-decoration: none; padding: 10px 0">세무사 자세히 보기 ›</a>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 16px">
 <sc-for list="{{experts}}" as="e" hint-placeholder-count="2">
@@ -369,6 +371,7 @@ AI 세무 진단 · 베타</span>
 <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 40px">
 <span style="font-size: 15px; font-weight: 700; color: {{navy}}">절세 사례</span>
 <h2 style="margin: 0; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.3; letter-spacing: -0.03em">숫자로 확인하세요</h2>
+<a href="Cases.dc.html" style="align-self: flex-start; font-size: 15px; font-weight: 700; color: #2563EB; text-decoration: none; padding: 10px 0">전체 사례 보기 ›</a>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px">
 <sc-for list="{{cases}}" as="c" hint-placeholder-count="3">
