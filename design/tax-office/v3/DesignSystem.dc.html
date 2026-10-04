@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>올바른 세무 디자인 시스템 V3</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#F8FAFC}
+a{color:#2563EB}a:hover{color:#1D4ED8}
+*{box-sizing:border-box}
+</style>
+</helmet>
+<div style="width: 1200px; min-height: 2300px; padding: 72px; background: #F8FAFC; font-family: 'IBM Plex Sans KR', system-ui, sans-serif; color: #0F172A; font-size: 16px; line-height: 1.6; display: flex; flex-direction: column; gap: 56px; font-variant-numeric: tabular-nums">
+
+<header style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 14px; font-weight: 700; color: #475569">DESIGN SYSTEM · V3</span>
+<h1 style="margin: 0; font-size: 44px; letter-spacing: -0.03em; line-height: 1.2">올바른 세무 디자인 시스템</h1>
+<p style="margin: 0; font-size: 18px; color: #475569">원칙 하나: <strong style="color: #0F172A">네이비는 신뢰, 블루는 행동.</strong> 블루는 메인 CTA에만 씁니다.</p>
+</header>
+
+<!-- Colors -->
+<section style="display: flex; flex-direction: column; gap: 20px">
+<h2 style="margin: 0; font-size: 24px; letter-spacing: -0.02em">컬러 토큰</h2>
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px">
+<sc-for list="{{colors}}" as="c" hint-placeholder-count="10">
+<div style="display: flex; flex-direction: column; border-radius: 16px; overflow: hidden; background: #FFFFFF; border: 1px solid #CBD5E1">
+<div style="{{c.swatch}}">
+<span style="{{c.sample}}">Aa 1,234</span>
+</div>
+<div style="padding: 14px; display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 15px; font-weight: 700">{{c.name}}</span>
+<span style="font-size: 14px; color: #475569; font-family: ui-monospace, Menlo, monospace">{{c.hex}}</span>
+<span style="font-size: 14px; color: #334155">{{c.role}}</span>
+<span style="margin-top: 6px; align-self: flex-start; font-size: 14px; font-weight: 700; padding: 2px 8px; border-radius: 6px; background: #F1F5F9; color: #0F172A">{{c.ratio}}</span>
+</div>
+</div>
+</sc-for>
+</div>
+<p style="margin: 0; font-size: 14px; color: #475569">대비값 = 흰 배경(#FFFFFF) 기준 WCAG 2.1 대비. 블루는 흰 글자를 올린 기준입니다.</p>
+</section>
+
+<!-- Buttons -->
+<section style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 16px; padding: 28px; border-radius: 20px; background: #FFFFFF; border: 1px solid #CBD5E1">
+<h2 style="margin: 0; font-size: 22px; letter-spacing: -0.02em">버튼 위계</h2>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; align-items: center; gap: 16px">
+<button type="button" style="height: 56px; padding: 0 24px; border: 0; border-radius: 14px; background: #2563EB; color: #FFFFFF; font-size: 17px; font-weight: 700; font-family: inherit">상담 신청하기</button>
+<span style="font-size: 14px; color: #334155"><strong>Primary CTA</strong> · 블루 #2563EB · 화면당 1종</span>
+</div>
+<div style="display: flex; align-items: center; gap: 16px">
+<button type="button" style="height: 56px; padding: 0 24px; border-radius: 14px; background: #FFFFFF; border: 1px solid #0F172A; color: #0F172A; font-size: 16px; font-weight: 700; font-family: inherit">서비스 둘러보기</button>
+<span style="font-size: 14px; color: #334155"><strong>Secondary</strong> · 네이비 외곽선</span>
+</div>
+<div style="display: flex; align-items: center; gap: 16px">
+<a href="#ds" style="font-size: 15px; font-weight: 700; color: #2563EB; text-decoration: none; padding: 12px 0">상담하기 ›</a>
+<span style="font-size: 14px; color: #334155"><strong>Text link</strong> · 카드 내부 보조 행동</span>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 16px; padding: 28px; border-radius: 20px; background: #FFFFFF; border: 1px solid #CBD5E1">
+<h2 style="margin: 0; font-size: 22px; letter-spacing: -0.02em">칩 상태</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<button type="button" style="min-height: 44px; padding: 0 16px; border-radius: 12px; background: #0F172A; color: #FFFFFF; border: 1px solid #0F172A; font-size: 15px; font-weight: 600; font-family: inherit">기장 대리</button>
+<button type="button" style="min-height: 44px; padding: 0 16px; border-radius: 12px; background: #FFFFFF; color: #334155; border: 1px solid #CBD5E1; font-size: 15px; font-weight: 600; font-family: inherit">신고 대리</button>
+<button type="button" style="min-height: 44px; padding: 0 16px; border-radius: 12px; background: #FFFFFF; color: #334155; border: 1px solid #CBD5E1; font-size: 15px; font-weight: 600; font-family: inherit">상속·증여</button>
+</div>
+<p style="margin: 0; font-size: 15px; color: #334155">선택 = <strong style="color: #0F172A">네이비 채움</strong>. 블루를 쓰지 않아 CTA와 경쟁하지 않습니다.</p>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 4px">
+<div style="padding: 14px; border-radius: 12px; background: #F0FDF4; border: 1px solid #86EFAC; font-size: 14px; color: #14532D"><strong>DO</strong> · 메인 CTA = 블루 채움</div>
+<div style="padding: 14px; border-radius: 12px; background: #FEF2F2; border: 1px solid #FCA5A5; font-size: 14px; color: #7F1D1D"><strong>DON'T</strong> · 칩·차트·뱃지에 블루</div>
+</div>
+</div>
+</section>
+
+<!-- Typography & amounts -->
+<section style="display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 4px; padding: 28px; border-radius: 20px; background: #FFFFFF; border: 1px solid #CBD5E1">
+<h2 style="margin: 0 0 12px; font-size: 22px; letter-spacing: -0.02em">타입 스케일 · IBM Plex Sans KR</h2>
+<sc-for list="{{types}}" as="t" hint-placeholder-count="6">
+<div style="display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px; align-items: baseline; padding: 10px 0; border-bottom: 1px solid #E2E8F0">
+<span style="font-size: 14px; color: #475569">{{t.spec}}</span>
+<span style="{{t.style}}">{{t.sample}}</span>
+</div>
+</sc-for>
+</div>
+<div style="display: flex; flex-direction: column; gap: 16px; padding: 28px; border-radius: 20px; background: #FFFFFF; border: 1px solid #CBD5E1">
+<h2 style="margin: 0; font-size: 22px; letter-spacing: -0.02em">금액 표기 규칙</h2>
+<div style="display: flex; flex-direction: column; gap: 4px; padding: 20px; border-radius: 14px; background: #F8FAFC">
+<span style="font-size: 14px; color: #475569">예상 절세액</span>
+<span style="font-size: 40px; font-weight: 700; letter-spacing: -0.03em; color: #0F172A">[0,000]만 원</span>
+</div>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 15px; color: #334155">
+<li><strong style="color: #0F172A">Bold 700 + 네이비 #0F172A</strong> (대비 17.9:1)</li>
+<li><strong style="color: #0F172A">고정폭 숫자</strong> (tabular-nums)로 자릿수 정렬</li>
+<li>라벨은 14px #475569, 숫자는 라벨보다 2단계 이상 크게</li>
+<li>금액에 블루·그린 같은 장식색 금지</li>
+</ul>
+</div>
+</section>
+
+<!-- Surfaces -->
+<section style="display: flex; flex-direction: column; gap: 20px">
+<h2 style="margin: 0; font-size: 24px; letter-spacing: -0.02em">서피스 · 간격 · 모서리</h2>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+<div style="padding: 24px; border-radius: 20px; background: #F8FAFC; border: 1px dashed #94A3B8; display: flex; flex-direction: column; gap: 12px">
+<span style="font-size: 14px; font-weight: 700; color: #475569">페이지 #F8FAFC</span>
+<div style="padding: 20px; border-radius: 16px; background: #FFFFFF; border: 1px solid #CBD5E1; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 14px; font-weight: 700">카드 #FFFFFF · 테두리 #CBD5E1</span>
+<div style="height: 48px; border-radius: 12px; background: #FFFFFF; border: 1px solid #8492A6; display: flex; align-items: center; padding: 0 14px; font-size: 14px; color: #475569">입력 필드 테두리 #8492A6 (3.2:1)</div>
+</div>
+</div>
+<div style="padding: 24px; border-radius: 20px; background: #FFFFFF; border: 1px solid #CBD5E1; display: flex; flex-direction: column; gap: 10px; font-size: 15px; color: #334155">
+<span style="font-size: 14px; font-weight: 700; color: #475569">간격 (8px 그리드)</span>
+<span><strong style="color: #0F172A">8 · 16 · 24 · 32</strong> 컴포넌트 내부</span>
+<span><strong style="color: #0F172A">48 · 64</strong> 블록 사이</span>
+<span><strong style="color: #0F172A">120</strong> 섹션 사이 (모바일 56)</span>
+</div>
+<div style="padding: 24px; border-radius: 20px; background: #FFFFFF; border: 1px solid #CBD5E1; display: flex; flex-direction: column; gap: 10px; font-size: 15px; color: #334155">
+<span style="font-size: 14px; font-weight: 700; color: #475569">모서리</span>
+<span><strong style="color: #0F172A">12</strong> 버튼·칩·입력</span>
+<span><strong style="color: #0F172A">16–20</strong> 작은 카드</span>
+<span><strong style="color: #0F172A">24</strong> 큰 카드·섹션 패널</span>
+</div>
+</div>
+</section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1200,"height":2300}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const sw = (bg, fg) => ({
+      swatch: 'height: 96px; background: ' + bg + '; display: flex; align-items: flex-end; padding: 12px;' + (bg === '#FFFFFF' || bg === '#F8FAFC' || bg === '#F1F5F9' ? ' border-bottom: 1px solid #E2E8F0;' : ''),
+      sample: 'font-size: 18px; font-weight: 700; color: ' + fg + ';',
+    });
+    const c = (name, hex, role, ratio, fg) => ({ name, hex, role, ratio, ...sw(hex, fg) });
+    return {
+      colors: [
+        c('Navy 900', '#0F172A', '브랜드·헤드라인·금액', '17.9:1', '#FFFFFF'),
+        c('Navy 800', '#1E293B', '다크 서피스', '14.6:1', '#FFFFFF'),
+        c('Blue 600', '#2563EB', '메인 CTA 전용', '흰 글자 5.2:1', '#FFFFFF'),
+        c('Blue 700', '#1D4ED8', 'CTA hover/pressed', '흰 글자 6.7:1', '#FFFFFF'),
+        c('Sky 300', '#93C5FD', '네이비 위 강조 글자', '네이비 위 9.9:1', '#0F172A'),
+        c('Slate 700', '#334155', '본문', '10.4:1', '#FFFFFF'),
+        c('Slate 600', '#475569', '보조 텍스트·라벨', '7.6:1', '#FFFFFF'),
+        c('Slate 500', '#64748B', '캡션 (최소 한계)', '4.8:1', '#FFFFFF'),
+        c('Slate 50', '#F8FAFC', '페이지 배경', '—', '#0F172A'),
+        c('Slate 100', '#F1F5F9', '칩·아이콘 타일', '—', '#0F172A'),
+      ],
+      types: [
+        { spec: 'Display 58/700', sample: '확실한 절세', style: 'font-size: 46px; font-weight: 700; letter-spacing: -0.04em; line-height: 1.2' },
+        { spec: 'H2 40/700', sample: '4단계면 끝납니다', style: 'font-size: 32px; font-weight: 700; letter-spacing: -0.03em' },
+        { spec: 'Amount 36/700', sample: '−[00]%', style: 'font-size: 32px; font-weight: 700; letter-spacing: -0.03em; color: #0F172A' },
+        { spec: 'H3 22/700', sample: '법인 전환', style: 'font-size: 22px; font-weight: 700' },
+        { spec: 'Body 16/400', sample: '담당 세무사가 직접 연락드립니다.', style: 'font-size: 16px; color: #334155' },
+        { spec: 'Caption 14/400', sample: '[기준일 YYYY.MM.DD]', style: 'font-size: 14px; color: #64748B' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

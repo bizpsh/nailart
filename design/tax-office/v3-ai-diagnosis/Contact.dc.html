@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>상담 예약 — 세무법인 올바른</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#F8FAFC}
+a{color:#2563EB}a:hover{color:#1D4ED8}
+*{box-sizing:border-box}
+input,textarea,button{font-family:inherit}
+input:focus,textarea:focus,button:focus-visible,a:focus-visible{outline:2px solid #2563EB;outline-offset:2px}
+button:disabled{cursor:not-allowed}
+</style>
+</helmet>
+<div style="font-family: 'IBM Plex Sans KR', system-ui, sans-serif; color: #0F172A; background: #F8FAFC; font-size: 16px; line-height: 1.6; font-variant-numeric: tabular-nums">
+<dc-import name="Header" active="contact" hint-size="100%,72px"></dc-import>
+
+<section style="background: #0F172A; color: #FFFFFF">
+<div style="max-width: 1200px; margin: 0 auto; padding: 64px 24px 56px; display: flex; flex-direction: column; gap: 14px">
+<nav aria-label="현재 위치" style="font-size: 14px; color: #CBD5E1"><a href="Main.dc.html" style="color: #CBD5E1">홈</a> › 상담 예약</nav>
+<h1 style="margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1.25; letter-spacing: -0.03em">원하는 시간에<br>담당 세무사와 만나세요</h1>
+<p style="margin: 0; font-size: 18px; color: #CBD5E1">첫 상담은 무료입니다.</p>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 56px 24px 96px">
+<sc-if value="{{showForm}}" hint-placeholder-val="{{ true }}">
+<form onSubmit="{{submit}}" style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+
+<fieldset style="margin: 0; padding: 24px; border-radius: 20px; background: #FFFFFF; border: 1px solid #CBD5E1">
+<legend style="float: left; width: 100%; padding: 0; margin-bottom: 14px; font-size: 17px; font-weight: 700">1. 상담 방식</legend>
+<div style="clear: both; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px">
+<sc-for list="{{methods}}" as="m" hint-placeholder-count="3">
+<button type="button" onClick="{{m.pick}}" aria-pressed="{{m.pressed}}" style="{{m.card}}">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{m.icon}}"></path></svg>
+<span style="font-size: 16px; font-weight: 700">{{m.label}}</span>
+<span style="font-size: 14px; opacity: 0.85">{{m.sub}}</span>
+</button>
+</sc-for>
+</div>
+</fieldset>
+
+<fieldset style="margin: 0; padding: 24px; border-radius: 20px; background: #FFFFFF; border: 1px solid #CBD5E1">
+<legend style="float: left; width: 100%; padding: 0; margin-bottom: 14px; font-size: 17px; font-weight: 700">2. 상담 분야</legend>
+<div style="clear: both; display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{areas}}" as="a" hint-placeholder-count="6">
+<button type="button" onClick="{{a.pick}}" aria-pressed="{{a.pressed}}" style="{{a.chip}}">{{a.label}}</button>
+</sc-for>
+</div>
+</fieldset>
+
+<fieldset style="margin: 0; padding: 24px; border-radius: 20px; background: #FFFFFF; border: 1px solid #CBD5E1">
+<legend style="float: left; width: 100%; padding: 0; margin-bottom: 14px; font-size: 17px; font-weight: 700">3. 날짜와 시간</legend>
+<div style="clear: both; display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px">
+<sc-for list="{{dates}}" as="d" hint-placeholder-count="10">
+<button type="button" onClick="{{d.pick}}" aria-pressed="{{d.pressed}}" aria-label="{{d.aria}}" style="{{d.card}}">
+<span style="font-size: 14px; font-weight: 600">{{d.dow}}</span>
+<span style="font-size: 20px; font-weight: 700">{{d.day}}</span>
+<span style="font-size: 14px">{{d.month}}월</span>
+</button>
+</sc-for>
+</div>
+<sc-if value="{{hasDate}}" hint-placeholder-val="{{ false }}">
+<div style="margin-top: 16px; display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px">
+<sc-for list="{{slots}}" as="s" hint-placeholder-count="6">
+<button type="button" onClick="{{s.pick}}" disabled="{{s.closed}}" aria-pressed="{{s.pressed}}" style="{{s.chip}}">{{s.label}}</button>
+</sc-for>
+</div>
+<p style="margin: 10px 0 0; font-size: 14px; color: #475569">마감 표시는 예시입니다. 실제 예약 시스템 연동 시 실시간으로 바뀝니다.</p>
+</sc-if>
+<sc-if value="{{noDate}}" hint-placeholder-val="{{ true }}">
+<p style="margin: 14px 0 0; font-size: 15px; color: #475569">날짜를 고르면 가능한 시간이 나타나요.</p>
+</sc-if>
+</fieldset>
+
+<fieldset style="margin: 0; padding: 24px; border-radius: 20px; background: #FFFFFF; border: 1px solid #CBD5E1; display: flex; flex-direction: column; gap: 16px">
+<legend style="float: left; width: 100%; padding: 0; font-size: 17px; font-weight: 700">4. 연락처</legend>
+<div style="clear: both; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px">
+<label style="display: flex; flex-direction: column; gap: 8px; font-size: 15px; font-weight: 700">이름
+<input type="text" required placeholder="홍길동" style="height: 54px; padding: 0 16px; border: 1px solid #8492A6; border-radius: 12px; background: #FFFFFF; font-size: 16px; color: #0F172A">
+</label>
+<label style="display: flex; flex-direction: column; gap: 8px; font-size: 15px; font-weight: 700">연락처
+<input type="tel" required placeholder="010-0000-0000" style="height: 54px; padding: 0 16px; border: 1px solid #8492A6; border-radius: 12px; background: #FFFFFF; font-size: 16px; color: #0F172A">
+</label>
+</div>
+<label style="display: flex; flex-direction: column; gap: 8px; font-size: 15px; font-weight: 700">미리 알려주실 내용 <span style="font-size: 14px; font-weight: 400; color: #475569">선택</span>
+<textarea rows="4" placeholder="업종, 매출 규모, 궁금한 점" style="padding: 14px 16px; border: 1px solid #8492A6; border-radius: 12px; background: #FFFFFF; font-size: 16px; line-height: 1.6; resize: vertical; color: #0F172A"></textarea>
+</label>
+<label style="display: flex; gap: 10px; align-items: center; font-size: 14px; color: #334155">
+<input type="checkbox" required style="width: 20px; height: 20px; margin: 0; flex-shrink: 0">
+<span>[개인정보 수집·이용] 동의 (필수) · 수집 항목: 이름, 연락처 · 보유 기간: [1년]</span>
+</label>
+</fieldset>
+</div>
+
+<aside style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 14px; padding: 24px; border-radius: 20px; background: #FFFFFF; border: 2px solid #0F172A">
+<span style="font-size: 17px; font-weight: 700">예약 요약</span>
+<dl style="margin: 0; display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 10px 12px; font-size: 15px">
+<dt style="color: #475569; font-weight: 600">방식</dt><dd style="{{sum.methodStyle}}">{{sum.method}}</dd>
+<dt style="color: #475569; font-weight: 600">분야</dt><dd style="{{sum.areaStyle}}">{{sum.area}}</dd>
+<dt style="color: #475569; font-weight: 600">일시</dt><dd style="{{sum.whenStyle}}">{{sum.when}}</dd>
+</dl>
+<button type="submit" disabled="{{notReady}}" style="{{submitStyle}}">상담 신청하기</button>
+<span style="font-size: 14px; color: #475569; text-align: center">{{hint}}</span>
+<a href="tel:[000-0000-0000]" style="display: flex; flex-direction: column; padding-top: 14px; border-top: 1px solid #E2E8F0; text-decoration: none; color: #0F172A">
+<span style="font-size: 14px; color: #475569">급하시면 전화로</span>
+<span style="font-size: 20px; font-weight: 700">[000-0000-0000]</span>
+</a>
+</aside>
+</form>
+</sc-if>
+
+<sc-if value="{{done}}" hint-placeholder-val="{{ false }}">
+<div aria-live="polite" style="max-width: 640px; margin: 0 auto; padding: 48px 32px; border-radius: 24px; background: #FFFFFF; border: 1px solid #CBD5E1; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center">
+<span style="width: 72px; height: 72px; border-radius: 50%; background: #0F172A; color: #FFFFFF; display: flex; align-items: center; justify-content: center">
+<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg>
+</span>
+<h2 style="margin: 0; font-size: 28px; letter-spacing: -0.02em">예약 신청이 접수되었습니다</h2>
+<p style="margin: 0; font-size: 18px; font-weight: 700">{{sum.when}} · {{sum.method}}</p>
+<p style="margin: 0; font-size: 16px; color: #475569">{{sum.area}} 분야 담당 세무사가 확정 연락을 드립니다.</p>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 8px">
+<button type="button" onClick="{{reset}}" style="height: 48px; padding: 0 20px; border-radius: 12px; border: 1px solid #0F172A; background: #FFFFFF; font-size: 15px; font-weight: 700; color: #0F172A; cursor: pointer">예약 변경하기</button>
+<a href="Main.dc.html" style="display: inline-flex; align-items: center; height: 48px; padding: 0 20px; border-radius: 12px; background: #F1F5F9; color: #0F172A; text-decoration: none; font-weight: 700; font-size: 15px">홈으로</a>
+</div>
+</div>
+</sc-if>
+</section>
+
+<dc-import name="Footer" hint-size="100%,300px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2100}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { method: null, area: null, date: null, time: null, done: false };
+  }
+  renderVals() {
+    const s = this.state;
+    const chip = (on, closed) => 'min-height: 44px; padding: 0 16px; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; ' +
+      (closed ? 'background: #F1F5F9; color: #64748B; border: 1px dashed #CBD5E1; text-decoration: line-through;' :
+        on ? 'background: #0F172A; color: #FFFFFF; border: 1px solid #0F172A;' : 'background: #FFFFFF; color: #334155; border: 1px solid #CBD5E1;');
+    const M = [
+      { id: '방문 상담', sub: '사무실에서 대면', icon: 'M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6' },
+      { id: '전화 상담', sub: '예약 시간에 전화', icon: 'M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z' },
+      { id: '화상 상담', sub: '링크를 문자로 발송', icon: 'M23 7l-7 5 7 5V7zM1 5h15v14H1z' },
+    ];
+    const methods = M.map((m) => {
+      const on = s.method === m.id;
+      return { ...m, label: m.id, pressed: on ? 'true' : 'false', pick: () => this.setState({ method: m.id }),
+        card: 'display: flex; flex-direction: column; align-items: flex-start; gap: 4px; min-height: 96px; padding: 16px; border-radius: 16px; cursor: pointer; text-align: left; ' +
+          (on ? 'background: #0F172A; color: #FFFFFF; border: 2px solid #0F172A;' : 'background: #FFFFFF; color: #0F172A; border: 2px solid #CBD5E1;') };
+    });
+    const areas = ['기장 대리', '신고 대리', '상속·증여', '법인 전환', '세무조사', '창업 세무'].map((label) => ({
+      label, pressed: s.area === label ? 'true' : 'false', chip: chip(s.area === label, false), pick: () => this.setState({ area: label }),
+    }));
+    const dows = ['일', '월', '화', '수', '목', '금', '토'];
+    const days = [];
+    const cur = new Date();
+    cur.setHours(0, 0, 0, 0);
+    while (days.length < 10) {
+      cur.setDate(cur.getDate() + 1);
+      const w = cur.getDay();
+      if (w !== 0 && w !== 6) days.push(new Date(cur));
+    }
+    const key = (d) => d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+    const label = (d) => (d.getMonth() + 1) + '월 ' + d.getDate() + '일 (' + dows[d.getDay()] + ')';
+    const dates = days.map((d, i) => {
+      const on = s.date === key(d);
+      return { dow: dows[d.getDay()], day: String(d.getDate()), month: String(d.getMonth() + 1), aria: label(d), pressed: on ? 'true' : 'false',
+        pick: () => this.setState({ date: key(d), dateLabel: label(d), dateIdx: i, time: null }),
+        card: 'flex: 0 0 76px; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 12px 0; border-radius: 14px; cursor: pointer; ' +
+          (on ? 'background: #0F172A; color: #FFFFFF; border: 2px solid #0F172A;' : 'background: #FFFFFF; color: #0F172A; border: 2px solid #CBD5E1;') };
+    });
+    const times = ['10:00', '11:00', '13:30', '14:30', '15:30', '16:30'];
+    const slots = times.map((t, j) => {
+      const closed = s.date !== null && (s.dateIdx + j * 3) % 5 === 0;
+      const on = s.time === t;
+      return { label: closed ? t + ' 마감' : t, closed, pressed: on ? 'true' : 'false', chip: chip(on, closed), pick: () => { if (!closed) this.setState({ time: t }); } };
+    });
+    const ready = !!(s.method && s.area && s.date && s.time);
+    const missing = [!s.method && '방식', !s.area && '분야', !(s.date && s.time) && '일시'].filter(Boolean);
+    const val = (v) => v ? 'margin: 0; font-weight: 700; color: #0F172A;' : 'margin: 0; color: #64748B;';
+    return {
+      methods, areas, dates, slots,
+      hasDate: !!s.date, noDate: !s.date,
+      showForm: !s.done, done: s.done,
+      notReady: !ready,
+      hint: ready ? '신청 후 확정 연락을 드립니다' : missing.join(' · ') + '을(를) 선택해 주세요',
+      submitStyle: 'height: 58px; border: 0; border-radius: 14px; font-size: 17px; font-weight: 700; ' + (ready ? 'background: #2563EB; color: #FFFFFF; cursor: pointer;' : 'background: #E2E8F0; color: #64748B;'),
+      sum: {
+        method: s.method || '미선택', methodStyle: val(s.method),
+        area: s.area || '미선택', areaStyle: val(s.area),
+        when: s.date && s.time ? s.dateLabel + ' ' + s.time : '미선택', whenStyle: val(s.date && s.time),
+      },
+      submit: (e) => { e.preventDefault(); if (ready) this.setState({ done: true }); },
+      reset: () => this.setState({ done: false }),
+    };
+  }
+}
+</script>
+</body>
+</html>

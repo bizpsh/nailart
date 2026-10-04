@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>절세 사례 — 세무법인 올바른</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#F8FAFC}
+a{color:#2563EB}a:hover{color:#1D4ED8}
+*{box-sizing:border-box}
+button:focus-visible,a:focus-visible{outline:2px solid #2563EB;outline-offset:2px}
+</style>
+</helmet>
+<div style="font-family: 'IBM Plex Sans KR', system-ui, sans-serif; color: #0F172A; background: #F8FAFC; font-size: 16px; line-height: 1.6; font-variant-numeric: tabular-nums">
+<dc-import name="Header" active="cases" hint-size="100%,72px"></dc-import>
+
+<section style="background: #0F172A; color: #FFFFFF">
+<div style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 64px; display: flex; flex-direction: column; gap: 14px">
+<nav aria-label="현재 위치" style="font-size: 14px; color: #CBD5E1"><a href="Main.dc.html" style="color: #CBD5E1">홈</a> › 절세 사례</nav>
+<h1 style="margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1.25; letter-spacing: -0.03em">숫자로 확인하는<br>절세 사례</h1>
+<p style="margin: 0; font-size: 18px; color: #CBD5E1; max-width: 640px">고객 동의를 받은 사례만, 개인 식별 정보를 지우고 공개합니다.</p>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 56px 24px 0; display: flex; flex-direction: column; gap: 24px">
+<div role="group" aria-label="사례 분류" style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{filters}}" as="f" hint-placeholder-count="5">
+<button type="button" onClick="{{f.pick}}" aria-pressed="{{f.pressed}}" style="{{f.chip}}">{{f.label}} <span style="font-weight: 700; opacity: 0.8">{{f.count}}</span></button>
+</sc-for>
+</div>
+
+<sc-if value="{{hasDetail}}" hint-placeholder-val="{{ false }}">
+<article aria-live="polite" style="display: flex; flex-direction: column; gap: 24px; padding: 32px; border-radius: 24px; background: #FFFFFF; border: 2px solid #0F172A">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="align-self: flex-start; font-size: 14px; font-weight: 700; padding: 4px 10px; border-radius: 8px; background: #F1F5F9">{{d.cat}} · {{d.tag}}</span>
+<h2 style="margin: 0; font-size: 26px; letter-spacing: -0.02em; line-height: 1.4">{{d.title}}</h2>
+<span style="font-size: 15px; color: #475569">{{d.who}}</span>
+</div>
+<button type="button" onClick="{{closeDetail}}" aria-label="사례 상세 닫기" style="width: 44px; height: 44px; border: 0; border-radius: 12px; background: #F1F5F9; color: #0F172A; cursor: pointer; display: flex; align-items: center; justify-content: center">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+</button>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px">
+<div style="padding: 20px; border-radius: 16px; background: #F8FAFC; border: 1px solid #E2E8F0"><span style="font-size: 14px; font-weight: 700; color: #475569">01 상황</span><p style="margin: 6px 0 0; font-size: 15px">[고객 상황 요약 — 업종, 규모, 상담 계기]</p></div>
+<div style="padding: 20px; border-radius: 16px; background: #F8FAFC; border: 1px solid #E2E8F0"><span style="font-size: 14px; font-weight: 700; color: #475569">02 쟁점</span><p style="margin: 6px 0 0; font-size: 15px">[세무상 쟁점 — 누락 항목, 리스크]</p></div>
+<div style="padding: 20px; border-radius: 16px; background: #F8FAFC; border: 1px solid #E2E8F0"><span style="font-size: 14px; font-weight: 700; color: #475569">03 해결 전략</span><p style="margin: 6px 0 0; font-size: 15px">{{d.how}}</p></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: center; padding: 24px; border-radius: 16px; background: #0F172A; color: #FFFFFF">
+<div style="display: flex; flex-direction: column; min-width: 160px">
+<span style="font-size: 14px; color: #CBD5E1">세 부담 변화</span>
+<span style="font-size: 40px; font-weight: 700; letter-spacing: -0.03em">−[00]%</span>
+</div>
+<div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) 96px; gap: 10px; align-items: center; font-size: 14px">
+<span style="color: #CBD5E1">전</span><span style="height: 12px; border-radius: 6px; background: #94A3B8"></span><span style="text-align: right; font-weight: 700">[0,000]만 원</span>
+</div>
+<div style="display: grid; grid-template-columns: 44px minmax(0, 1fr) 96px; gap: 10px; align-items: center; font-size: 14px">
+<span style="color: #CBD5E1">후</span><span style="height: 12px; border-radius: 6px; background: #334155; display: flex"><span style="width: {{d.after}}; border-radius: 6px; background: #FFFFFF"></span></span><span style="text-align: right; font-weight: 700">[0,000]만 원</span>
+</div>
+</div>
+</div>
+<a href="Contact.dc.html" style="align-self: flex-start; display: inline-flex; align-items: center; height: 56px; padding: 0 24px; border-radius: 14px; background: #2563EB; color: #FFFFFF; text-decoration: none; font-weight: 700; font-size: 16px">비슷한 상황이라면 상담 신청하기</a>
+</article>
+</sc-if>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px">
+<sc-for list="{{list}}" as="c" hint-placeholder-count="6">
+<button type="button" onClick="{{c.open}}" aria-pressed="{{c.pressed}}" style="{{c.card}}">
+<span style="display: flex; justify-content: space-between; align-items: center; gap: 8px">
+<span style="font-size: 14px; font-weight: 700; padding: 4px 10px; border-radius: 8px; background: #F1F5F9; color: #0F172A">{{c.cat}} · {{c.tag}}</span>
+<span style="font-size: 26px; font-weight: 700; letter-spacing: -0.03em; color: #0F172A">−[00]%</span>
+</span>
+<span style="font-size: 18px; font-weight: 700; line-height: 1.45; color: #0F172A">{{c.title}}</span>
+<span style="font-size: 14px; color: #475569">{{c.who}}</span>
+<span style="height: 10px; border-radius: 5px; background: #E2E8F0; display: flex"><span style="width: {{c.after}}; border-radius: 5px; background: #0F172A"></span></span>
+<span style="font-size: 14px; font-weight: 700; color: #2563EB">사례 자세히 보기 ›</span>
+</button>
+</sc-for>
+</div>
+<sc-if value="{{empty}}" hint-placeholder-val="{{ false }}">
+<p style="margin: 0; padding: 40px; text-align: center; color: #475569">이 분류의 공개 사례가 아직 없습니다.</p>
+</sc-if>
+<p style="margin: 0; font-size: 14px; color: #475569">막대 길이는 예시입니다. 실제 사례 수치로 교체할 때 함께 맞춰 주세요.</p>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 96px 24px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; padding: 40px; border-radius: 24px; background: #FFFFFF; border: 1px solid #CBD5E1">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h2 style="margin: 0; font-size: 26px; letter-spacing: -0.02em">내 상황도 절세 여지가 있을까?</h2>
+<p style="margin: 0; font-size: 16px; color: #475569">1분 AI 절세 진단 또는 담당 세무사 상담으로 확인하세요.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a href="Main.dc.html" style="display: inline-flex; align-items: center; height: 56px; padding: 0 22px; border-radius: 14px; border: 1px solid #0F172A; color: #0F172A; text-decoration: none; font-weight: 700">AI 절세 진단 (홈)</a>
+<a href="Contact.dc.html" style="display: inline-flex; align-items: center; height: 56px; padding: 0 22px; border-radius: 14px; background: #2563EB; color: #FFFFFF; text-decoration: none; font-weight: 700">상담 신청하기</a>
+</div>
+</div>
+</section>
+
+<dc-import name="Footer" hint-size="100%,300px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2400}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { filter: '전체', open: -1 };
+  }
+  renderVals() {
+    const C = [
+      { cat: '개인사업자', tag: '경비 정리', title: '[업종] 개인사업자, 누락 경비 정리로 종소세 절감', who: '[업종] · 연매출 [0]억 원', after: '62%', how: '[적용 전략 — 예: 업무용 차량·인건비 증빙 재정리]' },
+      { cat: '법인', tag: '법인 전환', title: '[업종] 개인사업자, 법인 전환으로 세 부담 완화', who: '[업종] · 연매출 [00]억 원', after: '58%', how: '[적용 전략 — 예: 전환 시점 조정, 급여·배당 설계]' },
+      { cat: '상속·증여', tag: '증여 설계', title: '[가족 구성] 부동산 증여, 사전 설계로 세 부담 축소', who: '[재산 유형] · [00]억 원', after: '46%', how: '[적용 전략 — 예: 10년 단위 분할 증여, 평가 방법 검토]' },
+      { cat: '세무조사', tag: '조사 대응', title: '[업종] 법인 세무조사, 소명 자료로 추징액 감축', who: '[업종] 법인 · [조사 유형]', after: '64%', how: '[적용 전략 — 예: 거래 증빙 재구성, 소명서 작성]' },
+      { cat: '법인', tag: '고용 공제', title: '[업종] 법인, 놓친 고용 세액공제 경정청구', who: '[업종] 법인 · 상시근로자 [00]명', after: '71%', how: '[적용 전략 — 예: 최근 [5]년 고용 증가분 경정청구]' },
+      { cat: '개인사업자', tag: '성실신고', title: '[업종] 성실신고 대상자, 확인비용 공제와 경비 검토', who: '[업종] · 연매출 [00]억 원', after: '80%', how: '[적용 전략 — 예: 확인비용 세액공제, 감가상각 검토]' },
+    ];
+    const cats = ['전체', '개인사업자', '법인', '상속·증여', '세무조사'];
+    const f = this.state.filter;
+    const chip = (on) => 'min-height: 44px; padding: 0 16px; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: inherit; ' +
+      (on ? 'background: #0F172A; color: #FFFFFF; border: 1px solid #0F172A;' : 'background: #FFFFFF; color: #334155; border: 1px solid #CBD5E1;');
+    const shown = C.map((c, i) => ({ ...c, i })).filter((c) => f === '전체' || c.cat === f);
+    const d = this.state.open >= 0 ? C[this.state.open] : null;
+    return {
+      filters: cats.map((label) => ({
+        label,
+        count: String(label === '전체' ? C.length : C.filter((c) => c.cat === label).length),
+        pressed: f === label ? 'true' : 'false',
+        chip: chip(f === label),
+        pick: () => this.setState({ filter: label, open: -1 }),
+      })),
+      list: shown.map((c) => {
+        const on = this.state.open === c.i;
+        return { ...c, pressed: on ? 'true' : 'false', open: () => this.setState({ open: c.i }),
+          card: 'display: flex; flex-direction: column; gap: 14px; padding: 24px; border-radius: 20px; text-align: left; cursor: pointer; font-family: inherit; background: #FFFFFF; border: 2px solid ' + (on ? '#0F172A' : '#CBD5E1') + ';' };
+      }),
+      empty: shown.length === 0,
+      hasDetail: !!d,
+      d: d || { cat: '', tag: '', title: '', who: '', after: '0%', how: '' },
+      closeDetail: () => this.setState({ open: -1 }),
+    };
+  }
+}
+</script>
+</body>
+</html>
